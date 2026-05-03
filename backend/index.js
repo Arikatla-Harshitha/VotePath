@@ -1,23 +1,24 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
-import { GoogleGenerativeAI } from '@google/generative-ai';
-
-dotenv.config();
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Get directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Initialize the Gemini API
-const apiKey = process.env.GEMINI_API_KEY;
+// Serve static files from the built frontend
+app.use(express.static(join(__dirname, '../public')));
 
-const getAIResponse = async (message) => {
-  // Mock response for demo purposes
-  // In production, replace with actual AI call
+const getAIResponse = (message) => {
+  // Local response without API
   const responses = {
     "hello": "Hello! How can I help you with voting information today?",
     "what is voting": "Voting is the process by which citizens choose their representatives or decide on issues. In the US, it's a fundamental right for eligible citizens.",
@@ -84,21 +85,26 @@ app.get('/api/voting-plan', (req, res) => {
 });
 
 // AI endpoint
-app.post('/api/ai', async (req, res) => {
+app.post('/api/ai', (req, res) => {
   try {
     const { message } = req.body;
     if (!message) {
       return res.status(400).json({ error: 'Message is required' });
     }
-    const response = await getAIResponse(message);
+    const response = getAIResponse(message);
     res.json({ response });
   } catch (error) {
-    console.error('AI API Error:', error.message);
-    res.status(500).json({ error: 'Sorry, I am having trouble connecting to Google Gemini. Please try again.' });
+    console.error('API Error:', error.message);
+    res.status(500).json({ error: 'An error occurred. Please try again.' });
   }
 });
 
+// Serve frontend for all unmatched routes (SPA routing)
+app.get('*', (req, res) => {
+  res.sendFile(join(__dirname, '../public/index.html'));
+});
+
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
