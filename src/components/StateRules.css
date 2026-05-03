@@ -1,0 +1,49 @@
+.state-rules-card {
+  margin-bottom: 2rem;
+  background-color: var(--color-surface);
+}
+
+.state-selector {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.state-selector:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.rule-item {
+  background-color: var(--color-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--color-primary);
+}
+
+.rule-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.rule-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}

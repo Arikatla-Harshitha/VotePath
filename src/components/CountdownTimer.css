@@ -1,0 +1,59 @@
+.countdown-card {
+  background: linear-gradient(135deg, var(--color-surface) 0%, #1e293b 100%);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+.countdown-title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  border-radius: var(--radius);
+  padding: 1.5rem 1rem;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.time-value {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .time-value {
+    font-size: 2rem;
+  }
+}

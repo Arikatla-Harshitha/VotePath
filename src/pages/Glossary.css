@@ -1,0 +1,44 @@
+.glossary-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.search-container {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.terms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.term-card {
+  height: 100%;
+}
+
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
